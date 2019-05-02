@@ -1,0 +1,150 @@
+body, html {
+  font-family: 'Lato', sans-serif !important;
+  height: 100%;
+}
+
+.bg { 
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('img/bg/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#div1 {
+  animation-timing-function: cubic-bezier(.03,1.05,.32,1);
+}
+
+@keyframes zoomIn{
+	from {transform: scale(0,0);}
+	to {transform: scale(1,1);}
+} 
+
+.zoom {
+	transform: scale(1,1);
+	animation-name: zoomIn;
+	animation-duration: 0.6s;
+}
+
+.navbar {
+  opacity: 0.9;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container-main {
+  padding: 2em 4em;
+}
+
+.material-icons.md-dark { 
+  color: rgba(0, 0, 0, 0.80); 
+}
+
+.material-icons.md-light{
+  color: rgba(255, 255, 255, 0.9)
+}
+
+.dank{
+  background-color: black;
+}
+
+.hr-light { 
+  display: block; 
+  height: 1px;
+  border: 0; 
+  border-top: 1px solid #fff;
+  padding: 0;
+  margin: 3em -4em 2em; 
+}
+
+@keyframes trans {
+  from {transform: translateY(2em);}
+  to {transform: translateY(0em);}
+}
+
+@keyframes pop{
+  0% { opacity: 0;}
+  1% { opacity: 0;}
+  100%{ opacity: 1;}
+}
+
+.popup{
+  opacity: 1;
+  transform: translateY(0em);
+  animation-name: trans,pop; 
+  animation-duration: 0.6s;
+}
+
+.pagPad{
+  margin-bottom: 0em;
+}
+
+.sc{
+  color: grey;
+}
+
+.sc:hover{
+  color: orangered;
+}
+
+.sc:disabled{
+  color: grey;
+}
+
+.bc{
+  color: grey;
+}
+
+.bc:hover{
+  color:limegreen;
+}
+
+.bc-disabled{
+  color: grey;
+  pointer-events: none;
+}
+
+.bg-mblue{
+  background-color: #70ccf9;
+}
+
+.bg-osoda{
+  background-color: #f55d3e;
+}
+
+.bg-mtomb{
+  background-color: #878e88;
+}
+
+.bg-jonquil{
+  background-color: #f7cb15;
+}
+
+.cl-mblue{
+  color: #70ccf9;
+}
+
+.cl-osoda{
+  color: #f55d3e;
+}
+
+.cl-mtomb{
+  color: #878e88;
+}
+
+.cl-jonquil{
+  color: #f7cb15;
+}
+
+.pp{
+  border: #fff 0.5em solid
+}
