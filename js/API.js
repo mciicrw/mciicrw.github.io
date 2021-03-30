@@ -106,11 +106,17 @@ async function actiObjBuilder(username){
 
 /** display data into html */
 async function displayData(username){
-    const userDetails = getUserDetails(username);
-    const activityDetails = actiObjBuilder(username);
+    //const userDetails = 
+    getUserDetails(username)
+    .then(result => result.json)
+    .then(result => console.log(result));
+    //const activityDetails = 
+    actiObjBuilder(username)
+    .then(result => result.json)
+    .then(result => console.log(result));
 
-    console.log(userDetails);
-    console.log(activityDetails);
+    // console.log(userDetails);
+    // console.log(activityDetails);
     /*
     // display avatar, follow, and repo count
     document.querySelector('#pp').src = userDetails.data.avatar_url;
