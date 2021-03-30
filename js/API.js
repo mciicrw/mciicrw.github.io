@@ -106,12 +106,10 @@ async function actiObjBuilder(username){
 
 /** display data into html */
 function displayData(username){
-    //const userDetails = 
-    getUserDetails(username)
-    .then(result => result.json())
-    .then(result => console.log(result));
+    const userDetails = getUserDetails(username).then(result => result.json()).then(result => console.log(result));
     const activityDetails = actiObjBuilder(username)
     console.log(activityDetails);
+    console.log(userDetails);
     
 
     // console.log(userDetails);
