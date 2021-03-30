@@ -137,9 +137,9 @@ footer h4{
 #type{
     margin: 0 0.5em;
     padding: 0.5em;
-    background: #b48ead;
-    color: var(--bg-shade2);
+    color: #eceff4;
     border-radius: 5px;
+    height: 28px;
 }
 
 #repo,
@@ -149,4 +149,10 @@ footer h4{
     padding: 0.5em;
     margin: 0 0.5em 0 0;
     border-radius: 5px;
+    height: 28px;
+    overflow: hidden;
+}
+
+#comment {
+    width: 394px;
 }

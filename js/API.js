@@ -1,80 +1,137 @@
-/*
-function activiTypes(type) {
-    let event = "";
-    if(type ==="PushEvent") event = "Push";
-    if(type ==="ForkEvent") event = "Fork";
-    if(type ==="CreateEvent") event = "Create";
-    if(type ==="DeleteEvent") event = "Delete";
-    if(type ==="GollumEvent") event = "Gollum";
-    if(type ==="IssueEvent") event = "Issue";
-    if(type ==="PullRequestEvent") event = "PR";
-    //if(type.includes("Comment")) event = "Comment";
-    event = "Unknown"
-    return event;
-}
-
-function calcuDate(date){
-    
-}
-
-
-fetch('https://api.github.com/users/mciicrw/events?per_page=1', {
-    headers: {
-        'Accept':'application/vnd.github.v3+json'
-    }})
-    .then(response => response.json())
-    .then(data => {
-        const activities = activiTypes(data.type);
-       /* document.getElementById('status').innerHTML = activities;
-        document.getElementById('repo').innerHTML = `<a href="https://github.com/${data.repo.name}>${data.repo.name}</a>`
-        document.getElementById('comment').innerHTML = data.payload.commit.message;
-        document.getElementById('time').innerHTML = data.created_at;
-        
-       console.log(activities);
-       console.log(data.repo);
-
-        
-    })
-    .catch(err => console.error(err)) 
-    fetch('https://api.github.com/users/mciicrw', {
-        headers: {
-            'Accept':'application/vnd.github.v3+json'
-        }})
-        .then(response => response.json())
-        .then( data =>{
-            document.getElementById('pp').src = data.avatar_url;
-            document.getElementById('follow').innerHTML = `<strong>${data.followers} Followers ${data.following} Following ${data.public_repos} Repositories</strong>`
-        })
-        .catch(err => console.error(err))
-        */
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
 const name = "mciicrw";
 
-/* async function getActivityDetails(username) {
-    const actiList = await octokit.rest.activity.listPublicEventsForUser({
-        username: username,
-        per_page: 1,
-    });
-    console.log(actiList);
+const activiTypes = {
+    CommitCommentEvent :{
+        type: "Comment",
+        color: "#b48ead"
+    },
+    CreateEvent:{
+        type: "Create",
+        color: "#b48ead"
+    },
+    DeleteEvent:{
+        type: "Delete",
+        color: "#b48ead"
+    },
+    ForkEvent:{
+        type: "Fork",
+        color: "#b48ead"
+    },
+    GollumEvent:{
+        type: "Gollum",
+        color: "#b48ead"
+    },
+    IssueCommentEvent:{
+        type: "Comment",
+        color: "#b48ead"
+    },
+    IssuesEvent:{
+        type: "Issues",
+        color: "#b48ead"
+    },
+    PublicEvent:{
+        type: "Public",
+        color: "#b48ead"
+    },
+    PullRequestEvent:{
+        type: "PR",
+        color: "#b48ead"
+    },
+    PullRequestReviewEvent:{
+        type: "Comment",
+        color: "#b48ead"
+    },
+    PushEvent:{
+        type: "Push",
+        color: "#b48ead"
+    },
+    ReleaseEvent:{
+        type: "Release",
+        color: "#b48ead"
+    },
+    WatchEvent:{
+        type: "Watch",
+        color: "#b48ead"
+    }
 }
-*/
+
 
 async function getActivityDetails(username){
     const actiList = await octokit.request(`GET /users/{username}/events/public`,{
         username: username,
         per_page: 1,
     })
-    console.log(actiList);
+    return actiList[0];
 }
 
 async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
     })
-    document.querySelector('#pp').src = details.data.avatar_url;
-    document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
+    return details;
 }
 
-getActivityDetails(name);
-getUserDetails(name);
+
+/** Parse Date into readable format */
+async function parseDate(date){
+    const dateArr = date.split('');
+    const rmZ = dateArr.pop();
+    const datenoZ = dateArr.join('');
+    const dateResult = moment(datenoZ).fromNow();
+
+    return dateResult;
+}
+
+
+async function actiObjBuilder(username){
+    // get the data from github API
+    const actiDetails = getActivityDetails(username);
+
+    // parse the type to get he type text & color 
+    const type = activiTypes[actiDetails.type];
+    
+    // make empty object
+    let activities = {};
+
+    // put data from variable into one activity object
+    activities.date = parseDate(actiDetails.data.created_at);
+    activities.type = type.type;
+    activities.color = type.color;
+
+    return activities;
+}
+
+
+/** display data into html */
+function displayData(username){
+    const userDetails = getUserDetails(username);
+    const activityDetails = actiObjBuilder(username);
+
+    // display avatar, follow, and repo count
+    document.querySelector('#pp').src = userDetails.data.avatar_url;
+    document.querySelector('#follow').innerHTML = `<strong>${userDetails.data.followers} Followers ${userDetails.data.following} Following ${userDetails.data.public_repos} Repositories</strong>`
+
+    // display recent activities
+    document.querySelector('#type').innerHTML = `<strong>${activityDetails.type}</strong>`;
+    document.querySelector('#type').style.background = activityDetails.color;
+    document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.data.repo.name}">${activityDetails.data.repo.name}</a>`;
+    document.querySelector('#comment').innerHTML = "";
+    document.querySelector('#time').innerHTML = activityDetails.date;
+}
+
+displayData(name);
+
+
+/*
+flow
+display data ---> display user --> get user details
+              |-> 
+
+get user details -> check type -> get type -> print
+
+document.querySelector('#pp').src = details.data.avatar_url;
+    document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
+
+*/
