@@ -49,6 +49,7 @@ fetch('https://api.github.com/users/mciicrw/events?per_page=1', {
         */
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
+const name = "mciicrw";
 
 /* async function getActivityDetails(username) {
     const actiList = await octokit.rest.activity.listPublicEventsForUser({
@@ -58,6 +59,15 @@ const octokit = new Octokit();
     console.log(actiList);
 }
 */
+
+async function getActivityDetails(username){
+    const actiList = await octokit.request(`GET /users/{username}/events/public`,{
+        username: username,
+        per_page: 1,
+    })
+    console.log(actiList);
+}
+
 async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
@@ -66,4 +76,5 @@ async function getUserDetails(username) {
     document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
 }
 
-getUserDetails('mciicrw');
+getUserDetails(name);
+getActivityDetails(name);
