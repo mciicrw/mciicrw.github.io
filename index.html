@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/styles.css">
+       <!--<script src="https://kit.fontawesome.com/8c2b04917e.js" crossorigin="anonymous"></script>-->
+    </head>
+    <body>
+        <header>
+            <div class="toggle-container">
+                <input type="checkbox" name="theme" id="themeToggle">
+            </div>
+        </header>
+        <main class="container">
+            <div class="free-space"></div>
+            <div class="flex-container-row">
+                <div class="main-container flex-container-column card-top">
+                    <div class="profile-pic-container">
+                        <img src="" alt="profile-pic" id="pp" style="width: 150px; border-radius: 50%;">
+                    </div>
+                    <h1>Stefanus Prasetyo</h1>
+                    <h3>a.k.a</h3>
+                    <h2>Shirin189 | TypicalNoob- | mciicrw</h2>
+                    <p id="follow"></p>
+                    <p>Hello! My name is Stefanus Prasetyo, Leonardo Vocational High School Graduate, was making linux desktop app with Qt/C++ and PyQt5, but now interested in Node.Js and WebDev</p>
+                    <p>Really like medieval style music, anime, and RPG games, especially Hack n Slash Action RPG</p>
+                    <button id="social">Social Link</button>
+                </div>
+            </div>
+            <div class="flex-container-row">
+                <div id="socialCard" class="card-mid flex-container-row">
+                    <p>Github</p>
+                    <p>Facebook</p>
+                    <p>Twitter</p>
+                    <p>Discord</p>
+                </div>
+            </div>
+            <div class="free-space"></div>
+        </main>
+        <footer class="flex-container-column">
+            <h4>Recent Activity</h4>
+            <div class="activity-container flex-container-row">
+                <div id="type"><strong>Push</strong></div>
+                <div id="repo">mciicrw/elaina-login</div>
+                <div id="comment">added index.theme file & update readme to include installing theme</div>
+                <div id="time"><em>23d ago</em></div>
+            </div>
+        </footer>
+        <script type="module" src="js/API.js"></script>
+        <script src="js/theme.js"></script>
+    </body>
+
+</html>

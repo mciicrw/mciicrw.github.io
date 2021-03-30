@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+    --bg: #d8dee9 ;
+    --fg: #2e3440;
+    --highlight: #5e81ac;
+    --bg-shade1: #e5e9f0;
+    --bg-shade2: #eceff4;
+
+    background: var(--bg);
+    color: var(--fg);
+}
+
+header {
+    display: flex;
+    height: 30px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-end;
+}
+/*
+.container {
+    position: absolute;
+    top: 0;
+    width: 98%;
+}
+*/
+.free-space{
+    height: 10vh;
+}
+
+.flex-container-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.flex-container-column {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.main-container{
+    width: 35vw;
+    height: 60vh;
+}
+
+.card-top{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.28);
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: var(--bg-shade2);
+    align-items: center;
+}
+
+.card-top h1{
+    font-size: 1.5em;
+}
+
+.card-top h2{
+    font-size: 1.1em
+}
+
+.card-top h3{
+    font-size: 1em;
+}
+
+.card-top p{
+    font-size: 0.8em;
+}
+
+.card-top h1,
+.card-top h2,
+.card-top h3,
+.card-top p {
+    margin: 0.2em 0;
+}
+
+.card-mid{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.28);
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: var(--bg-shade1);
+    align-items: center;
+}
+
+#socialCard{
+    z-index: -1;
+    position: absolute;
+    top: 61vh;
+    width: 35vw;
+    transition: 1s ease-in-out;
+}
+
+footer {
+    position: absolute;
+    bottom:0;
+    width: 98%;
+    align-items: center;
+}
+
+footer h4{
+    margin: 0;
+    padding: 0;
+}
+
+.activity-container {
+    padding-bottom: 1em;
+    font-size: 0.8em;
+}
+
+#type{
+    margin: 0 0.5em;
+    padding: 0.5em;
+    background: #b48ead;
+    color: var(--bg-shade2);
+    border-radius: 5px;
+}
+
+#repo,
+#comment,
+#time{
+    background: var(--bg-shade1);
+    padding: 0.5em;
+    margin: 0 0.5em 0 0;
+    border-radius: 5px;
+}
