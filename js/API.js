@@ -76,5 +76,5 @@ async function getUserDetails(username) {
     document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
 }
 
-getUserDetails(name);
 getActivityDetails(name);
+getUserDetails(name);
