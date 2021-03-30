@@ -109,6 +109,9 @@ function displayData(username){
     const userDetails = getUserDetails(username);
     const activityDetails = actiObjBuilder(username);
 
+    console.log(userDetails);
+    console.log(activityDetails);
+    /*
     // display avatar, follow, and repo count
     document.querySelector('#pp').src = userDetails.data.avatar_url;
     document.querySelector('#follow').innerHTML = `<strong>${userDetails.data.followers} Followers ${userDetails.data.following} Following ${userDetails.data.public_repos} Repositories</strong>`
@@ -119,6 +122,7 @@ function displayData(username){
     document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.data.repo.name}">${activityDetails.data.repo.name}</a>`;
     document.querySelector('#comment').innerHTML = "";
     document.querySelector('#time').innerHTML = activityDetails.date;
+    */
 }
 
 displayData(name);
