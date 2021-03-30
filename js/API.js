@@ -47,15 +47,22 @@ fetch('https://api.github.com/users/mciicrw/events?per_page=1', {
         })
         .catch(err => console.error(err))
         */
-import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
 
-async function getUserDetails(username) {
+/* async function getActivityDetails(username) {
     const actiList = await octokit.rest.activity.listPublicEventsForUser({
         username: username,
         per_page: 1,
     });
     console.log(actiList);
+}
+*/
+async function getUserDetails(username) {
+    const details = await octokit.request(`GET /users/{username}`,{
+        username: username,
+    })
+    console.log(details)
 }
 
 getUserDetails('mciicrw');
