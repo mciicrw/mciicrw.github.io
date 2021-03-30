@@ -62,7 +62,8 @@ async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
     })
-    console.log(details.data.avatar_url);
+    document.querySelector('#pp').src = details.data.avatar_url;
+    document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
 }
 
 getUserDetails('mciicrw');
