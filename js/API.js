@@ -105,7 +105,7 @@ async function actiObjBuilder(username){
 
 
 /** display data into html */
-function displayData(username){
+async function displayData(username){
     const userDetails = getUserDetails(username);
     const activityDetails = actiObjBuilder(username);
 
