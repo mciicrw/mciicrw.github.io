@@ -62,7 +62,7 @@ async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
     })
-    console.log(details)
+    console.log(details.data.avatar_url);
 }
 
 getUserDetails('mciicrw');
