@@ -182,7 +182,7 @@ async function displayData(username){
     document.querySelector('#type').innerHTML = `<strong>${activityDetails.type}</strong>`;
     document.querySelector('#type').style.background = activityDetails.color;
     document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.repo}">${activityDetails.repo}</a>`;
-    document.querySelector('#comment').innerHTML = "";
+    document.querySelector('#comment').innerHTML = activityDetails.desc;
     document.querySelector('#time').innerHTML = activityDetails.date;
     
 }
