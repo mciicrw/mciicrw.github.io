@@ -99,6 +99,7 @@ async function actiObjBuilder(username){
     activities.date = await parseDate(actiDetails.created_at);
     activities.type = type.type;
     activities.color = type.color;
+    activities.repo = actiDetails.repo.name;
 
     return activities;
 }
@@ -114,12 +115,12 @@ async function displayData(username){
     
     // display avatar, follow, and repo count
     document.querySelector('#pp').src = userDetails.data.avatar_url;
-    document.querySelector('#follow').innerHTML = `<strong>${userDetails.data.followers} Followers ${userDetails.data.following} Following ${userDetails.data.public_repos} Repositories</strong>`
+    document.querySelector('#follow').innerHTML = `<strong>${userDetails.followers} Followers ${userDetails.data.following} Following ${userDetails.public_repos} Repositories</strong>`
 
     // display recent activities
     document.querySelector('#type').innerHTML = `<strong>${activityDetails.type}</strong>`;
     document.querySelector('#type').style.background = activityDetails.color;
-    document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.data.repo.name}">${activityDetails.data.repo.name}</a>`;
+    document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.repo}">${activityDetails.repo}</a>`;
     document.querySelector('#comment').innerHTML = "";
     document.querySelector('#time').innerHTML = activityDetails.date;
     
