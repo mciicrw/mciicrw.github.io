@@ -77,7 +77,7 @@ const actiDescPayload = {
     PR: () => {
         return this.payload.pull_request.title
     },
-    Push: this.payload.commits.message,
+    Push: () => this.payload.commits.message,
     Release: () => {
         return this.payload.description
     },
