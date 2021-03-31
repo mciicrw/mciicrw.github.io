@@ -57,7 +57,55 @@ const activiTypes = {
     }
 }
 
+const actiDescPayload = {
+    Comment: () => {
+        return this.payload.comment.body
+    },
+    Create: () => {
+        return this.payload.description
+    },
+    Fork: () => {
+        return `forked to ${this.payload.forkee.full_name}`
+    },
+    Gollum: () => {
+        if(this.payload.pages.length > 1 ) return `${this.payload.pages.lenght} wiki pages updated!`;
+        return this.payload.pages[0][title]
+    },
+    Issues: () => {
+        return this.payload.issue.title
+    },
+    PR: () => {
+        return this.payload.pull_request.title
+    },
+    Push: this.payload.commits.message,
+    Release: () => {
+        return this.payload.description
+    },
+    Watch:() => {
+        return `${this.payload.action} the repos!`
+    }
 
+
+}
+
+const actiDescNoPayload = {
+    Delete: "Repository deleted for good",
+    Public: "Repository is now public!",
+}
+
+/** return string data from payload  */
+async function fetchDescription(type, data){
+    // check if event type is delete or public
+    // if true imedieately return object vaule from actiDescNoPayload
+    if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
+
+    const descObj = Object.create(actiDescPayload);
+    descObj.payload = data.payload;
+    
+    return descObj[type];
+}
+
+/** fetch user's latest activity details from github using octokit/core.js */
 async function getActivityDetails(username){
     const actiList = await octokit.request(`GET /users/{username}/events/public`,{
         username: username,
@@ -66,6 +114,7 @@ async function getActivityDetails(username){
     return actiList.data[0];
 }
 
+/** fetch user details from github using octokit/core.js */
 async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
@@ -76,9 +125,16 @@ async function getUserDetails(username) {
 
 /** Parse Date into readable format */
 async function parseDate(date){
+    // split string into individual character
     const dateArr = date.split('');
+
+    // remove last character from array, in this case is "Z"
     const rmZ = dateArr.pop();
+
+    // join array after last character removed
     const datenoZ = dateArr.join('');
+
+    // using moment.js parse date into "x ago" format
     const dateResult = moment(datenoZ).fromNow();
 
     return dateResult;
@@ -91,6 +147,10 @@ async function actiObjBuilder(username){
 
     // parse the type to get he type text & color 
     const type = activiTypes[actiDetails.type];
+
+    // fetch description from activity payload
+    // based on activity type
+    const actiDesc = await fetchDescription(type,actiDetails);
     
     // make empty object
     let activities = {};
@@ -100,6 +160,7 @@ async function actiObjBuilder(username){
     activities.type = type.type;
     activities.color = type.color;
     activities.repo = actiDetails.repo.name;
+    activities.desc = actiDesc;
 
     return activities;
 }
