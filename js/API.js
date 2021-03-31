@@ -122,6 +122,7 @@ async function fetchDescription(type, data){
     const descObj = Object.create(actiDescPayload);
     descObj.payload = data.payload;
     
+    console.log(descObj[type]);
     return descObj[type];
 }
 
