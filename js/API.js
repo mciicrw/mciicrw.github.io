@@ -87,7 +87,7 @@ async function parseDate(date){
 
 async function actiObjBuilder(username){
     // get the data from github API
-    const actiDetails = await getActivityDetails(username)
+    const actiDetails = await getActivityDetails(username);
 
     // parse the type to get he type text & color 
     const type = activiTypes[actiDetails.type];
@@ -106,8 +106,8 @@ async function actiObjBuilder(username){
 
 /** display data into html */
 async function displayData(username){
-    const userDetails = await getUserDetails(username)
-    const activityDetails = await actiObjBuilder(username)
+    const userDetails = await getUserDetails(username);
+    const activityDetails = await actiObjBuilder(username);
     console.log(activityDetails);
     console.log(userDetails);
     
