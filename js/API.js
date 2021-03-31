@@ -96,7 +96,7 @@ async function actiObjBuilder(username){
     let activities = {};
 
     // put data from variable into one activity object
-    activities.date = parseDate(actiDetails.data.created_at);
+    activities.date = parseDate(actiDetails.created_at);
     activities.type = type.type;
     activities.color = type.color;
 
@@ -108,8 +108,8 @@ async function actiObjBuilder(username){
 async function displayData(username){
     const userDetails = await getUserDetails(username);
     const activityDetails = await actiObjBuilder(username);
-    console.log(activityDetails);
     console.log(userDetails);
+    console.log(activityDetails);
     
 
     // console.log(userDetails);
