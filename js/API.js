@@ -114,8 +114,8 @@ async function displayData(username){
     // console.log(activityDetails);
     
     // display avatar, follow, and repo count
-    document.querySelector('#pp').src = userDetails.data.avatar_url;
-    document.querySelector('#follow').innerHTML = `<strong>${userDetails.followers} Followers ${userDetails.data.following} Following ${userDetails.public_repos} Repositories</strong>`
+    document.querySelector('#pp').src = userDetails.avatar_url;
+    document.querySelector('#follow').innerHTML = `<strong>${userDetails.followers} Followers ${userDetails.following} Following ${userDetails.public_repos} Repositories</strong>`
 
     // display recent activities
     document.querySelector('#type').innerHTML = `<strong>${activityDetails.type}</strong>`;
