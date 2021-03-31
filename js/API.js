@@ -77,7 +77,7 @@ const actiDescPayload = {
     PR: () => {
         return this.payload.pull_request.title
     },
-    Push: () => this.payload.commits[0].message,
+    Push: () => this.payload.commits[0][message],
     Release: () => {
         return this.payload.description
     },
@@ -102,7 +102,7 @@ async function fetchDescription(type, data){
     const descObj = Object.create(actiDescPayload);
     descObj.payload = data.payload;
     
-    console.log(descObj.payload);
+    console.log(descObj.payload.commits);
     return descObj[type];
 }
 
@@ -136,7 +136,7 @@ async function parseDate(date){
     const datenoZ = dateArr.join('');
 
     // using moment.js parse date into "x ago" format
-    const dateResult = moment(datenoZ).local().fromNow();
+    const dateResult = moment.parseZone(datenoZ).local().fromNow();
 
     console.log(moment(datenoZ).local());
     return dateResult;
