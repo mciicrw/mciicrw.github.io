@@ -77,7 +77,7 @@ const actiDescPayload = {
     PR: () => {
         return this.payload.pull_request.title
     },
-    Push: () => this.payload.commits.message,
+    Push: () => this.payload.commits[0].message,
     Release: () => {
         return this.payload.description
     },
@@ -136,8 +136,9 @@ async function parseDate(date){
     const datenoZ = dateArr.join('');
 
     // using moment.js parse date into "x ago" format
-    const dateResult = moment(datenoZ).fromNow();
+    const dateResult = moment(datenoZ).local().fromNow();
 
+    console.log(moment(datenoZ).local());
     return dateResult;
 }
 
