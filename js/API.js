@@ -96,7 +96,7 @@ async function actiObjBuilder(username){
     let activities = {};
 
     // put data from variable into one activity object
-    activities.date = parseDate(actiDetails.created_at);
+    activities.date = await parseDate(actiDetails.created_at);
     activities.type = type.type;
     activities.color = type.color;
 
@@ -108,13 +108,10 @@ async function actiObjBuilder(username){
 async function displayData(username){
     const userDetails = await getUserDetails(username);
     const activityDetails = await actiObjBuilder(username);
-    console.log(userDetails);
-    console.log(activityDetails);
-    
 
     // console.log(userDetails);
     // console.log(activityDetails);
-    /*
+    
     // display avatar, follow, and repo count
     document.querySelector('#pp').src = userDetails.data.avatar_url;
     document.querySelector('#follow').innerHTML = `<strong>${userDetails.data.followers} Followers ${userDetails.data.following} Following ${userDetails.data.public_repos} Repositories</strong>`
@@ -125,7 +122,7 @@ async function displayData(username){
     document.querySelector('#repo').innerHTML = `<a href="https://github.com/${activityDetails.data.repo.name}">${activityDetails.data.repo.name}</a>`;
     document.querySelector('#comment').innerHTML = "";
     document.querySelector('#time').innerHTML = activityDetails.date;
-    */
+    
 }
 
 displayData(name);
