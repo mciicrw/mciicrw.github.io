@@ -26,6 +26,11 @@ header {
     align-content: center;
     justify-content: flex-end;
 }
+
+a{
+    color: var(--fg);
+    text-decoration: none;
+}
 /*
 .container {
     position: absolute;
