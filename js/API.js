@@ -79,6 +79,7 @@ const actiDescPayload = {
     },
     Push: () => {
         const msg = this.payload.commits[0];
+        console.log(msg);
         return msg.message;
     },
     Release: () => {
@@ -121,7 +122,6 @@ async function fetchDescription(type, data){
     const descObj = Object.create(actiDescPayload);
     descObj.payload = data.payload;
     
-    console.log(descObj.payload.commits[0]);
     return descObj[type];
 }
 
