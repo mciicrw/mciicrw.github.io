@@ -77,7 +77,10 @@ const actiDescPayload = {
     PR: () => {
         return this.payload.pull_request.title
     },
-    Push: () => this.payload.commits[0][message],
+    Push: () => {
+        const msg = this.payload.commits[0];
+        return msg.message;
+    },
     Release: () => {
         return this.payload.description
     },
@@ -85,25 +88,11 @@ const actiDescPayload = {
         return `${this.payload.action} the repos!`
     }
 
-
 }
 
 const actiDescNoPayload = {
     Delete: "Repository deleted for good",
     Public: "Repository is now public!",
-}
-
-/** return string data from payload  */
-async function fetchDescription(type, data){
-    // check if event type is delete or public
-    // if true imedieately return object vaule from actiDescNoPayload
-    if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
-
-    const descObj = Object.create(actiDescPayload);
-    descObj.payload = data.payload;
-    
-    console.log(descObj.payload.commits);
-    return descObj[type];
 }
 
 /** fetch user's latest activity details from github using octokit/core.js */
@@ -123,6 +112,18 @@ async function getUserDetails(username) {
     return details.data;
 }
 
+/** return string data from payload  */
+async function fetchDescription(type, data){
+    // check if event type is delete or public
+    // if true imedieately return object vaule from actiDescNoPayload
+    if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
+
+    const descObj = Object.create(actiDescPayload);
+    descObj.payload = data.payload;
+    
+    console.log(descObj.payload.commits[0]);
+    return descObj[type];
+}
 
 /** Parse Date into readable format */
 async function parseDate(date){
@@ -138,7 +139,6 @@ async function parseDate(date){
     // using moment.js parse date into "x ago" format
     const dateResult = moment.parseZone(datenoZ).local().fromNow();
 
-    console.log(moment(datenoZ).local());
     return dateResult;
 }
 
