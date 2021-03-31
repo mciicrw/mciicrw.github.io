@@ -63,14 +63,14 @@ async function getActivityDetails(username){
         username: username,
         per_page: 1,
     })
-    return actiList[0];
+    return actiList.data[0];
 }
 
 async function getUserDetails(username) {
     const details = await octokit.request(`GET /users/{username}`,{
         username: username,
     })
-    return details;
+    return details.data;
 }
 
 
