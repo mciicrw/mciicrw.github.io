@@ -3,6 +3,7 @@ import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
 const name = "mciicrw";
 
+//activity type text & color
 const activiTypes = {
     CommitCommentEvent :{
         type: "Comment",
@@ -10,19 +11,19 @@ const activiTypes = {
     },
     CreateEvent:{
         type: "Create",
-        color: "#b48ead"
+        color: "#a3be8c"
     },
     DeleteEvent:{
         type: "Delete",
-        color: "#b48ead"
+        color: "#bf616a"
     },
     ForkEvent:{
         type: "Fork",
-        color: "#b48ead"
+        color: "#ebcb8b"
     },
     GollumEvent:{
         type: "Gollum",
-        color: "#b48ead"
+        color: "#5e81ac"
     },
     IssueCommentEvent:{
         type: "Comment",
@@ -30,15 +31,15 @@ const activiTypes = {
     },
     IssuesEvent:{
         type: "Issues",
-        color: "#b48ead"
+        color: "#bf616a"
     },
     PublicEvent:{
         type: "Public",
-        color: "#b48ead"
+        color: "#8fbcbb"
     },
     PullRequestEvent:{
         type: "PR",
-        color: "#b48ead"
+        color: "#d08770"
     },
     PullRequestReviewEvent:{
         type: "Comment",
@@ -46,18 +47,20 @@ const activiTypes = {
     },
     PushEvent:{
         type: "Push",
-        color: "#b48ead"
+        color: "#5e81ac"
     },
     ReleaseEvent:{
         type: "Release",
-        color: "#b48ead"
+        color: "#88c0d0"
     },
     WatchEvent:{
         type: "Watch",
-        color: "#b48ead"
+        color: "#81a1c1"
     }
 }
 
+// description if activity has no payload
+// or payload don't contain useful description
 const actiDescNoPayload = {
     Delete: "Repository deleted for good",
     Public: "Repository is now public!",
@@ -86,6 +89,8 @@ async function fetchDescription(type, data){
     // if true imedieately return object vaule from actiDescNoPayload
     if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
 
+    // if false run switch case to parse output from payload
+    // will refactor later
     let output = ""
     switch(type){
         case "Comment": 
@@ -186,9 +191,8 @@ async function displayData(username){
     
 }
 
+// run the functoin as soon as script loaded
 displayData(name);
-
-
 
 
 

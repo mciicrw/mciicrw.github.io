@@ -9,12 +9,23 @@ html {
     height: 100%;
     width: 100%;
 
-    --bg: #d8dee9 ;
+    --bg: #d8dee9;
     --fg: #2e3440;
     --highlight: #5e81ac;
     --bg-shade1: #e5e9f0;
     --bg-shade2: #eceff4;
+}
 
+
+html[data-theme='dark'] {
+    --bg: #2e3440;
+    --fg: #d8dee9;
+    --highlight: #5e81ac;
+    --bg-shade1: #3b4252;
+    --bg-shade2: #434c5e;
+}
+
+body{
     background: var(--bg);
     color: var(--fg);
 }
@@ -160,4 +171,12 @@ footer h4{
 
 #comment {
     width: 394px;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: ease-in-out 250ms !important;
+  transition-delay: 0 !important;
 }
