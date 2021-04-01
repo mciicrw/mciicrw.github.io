@@ -1,3 +1,4 @@
+
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
 const name = "mciicrw";
@@ -57,40 +58,6 @@ const activiTypes = {
     }
 }
 
-const actiDescPayload = {
-    Comment: () => {
-        return this.payload.comment.body
-    },
-    Create: () => {
-        return this.payload.description
-    },
-    Fork: () => {
-        return `forked to ${this.payload.forkee.full_name}`
-    },
-    Gollum: () => {
-        if(this.payload.pages.length > 1 ) return `${this.payload.pages.lenght} wiki pages updated!`;
-        return this.payload.pages[0][title]
-    },
-    Issues: () => {
-        return this.payload.issue.title
-    },
-    PR: () => {
-        return this.payload.pull_request.title
-    },
-    Push: () => {
-        const msg = this.payload.commits[0];
-        console.log(msg);
-        return msg.message;
-    },
-    Release: () => {
-        return this.payload.description
-    },
-    Watch:() => {
-        return `${this.payload.action} the repos!`
-    }
-
-}
-
 const actiDescNoPayload = {
     Delete: "Repository deleted for good",
     Public: "Repository is now public!",
@@ -119,11 +86,40 @@ async function fetchDescription(type, data){
     // if true imedieately return object vaule from actiDescNoPayload
     if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
 
-    const descObj = Object.create(actiDescPayload);
-    descObj.payload = data.payload;
-    
-    console.log(descObj);
-    return descObj[type];
+    let output = ""
+    switch(type){
+        case "Comment": 
+            output = data.payload.comment.body;
+            break;
+        case "Create":
+            output = data.payload.description;
+            break;
+        case "Fork":
+            output = `Forked to ${data.payload.forkee.full_name}`
+            break;
+        case "Gollum":
+            if(data.payload.pages.length > 1) output = `${data.payload.pages.length} wiki pages updated!`;
+            output = data.payload.pages[0].title;
+            break;
+        case "Issues":
+            output = data.payload.issue.title;
+            break;
+        case "PR":
+            output = data.payload.pull_request.title;
+            break;
+        case "Push":
+            output = data.payload.commits[0].message;
+            break;
+        case "Release":
+            output = data.payload.description;
+            break;
+        case "Watch":
+            output = `${data.payload.action} the repos!`
+            break;
+        default:
+            output = "unknown activities";
+    }
+    return output;
 }
 
 /** Parse Date into readable format */
@@ -191,6 +187,9 @@ async function displayData(username){
 }
 
 displayData(name);
+
+
+
 
 
 /*
