@@ -149,7 +149,7 @@ async function actiObjBuilder(username){
 
     // fetch description from activity payload
     // based on activity type
-    const actiDesc = await fetchDescription(type,actiDetails);
+    const actiDesc = await fetchDescription(type.type,actiDetails);
     
     // make empty object
     let activities = {};
