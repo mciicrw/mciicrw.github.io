@@ -104,7 +104,7 @@ a{
 
 .main-container{
     width: 454px;
-    height: 63vh;
+    height: 413px;
 }
 
 .card-top{
@@ -182,8 +182,8 @@ a{
 #socialCard{
     z-index: -1;
     position: absolute;
-    top: 61vh;
-    width: 35vw;
+    top: 60vh;
+    width: 454px;
     transition: 0.4s ease-in-out;
 }
 
@@ -195,6 +195,10 @@ a{
 
 .social-container:hover{
     color: var(--highlight);
+}
+
+.social-container span{
+    font-size: 1.5em;
 }
 
 footer {

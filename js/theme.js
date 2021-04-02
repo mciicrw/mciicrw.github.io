@@ -4,7 +4,7 @@ let s = "y";
 socialButton.onclick = () => {
     
     if (s==="y") {
-        document.querySelector('#socialCard').style.transform = "translateY(12vh)";
+        document.querySelector('#socialCard').style.transform = "translateY(15vh)";
         return s = "n";
         
     }
