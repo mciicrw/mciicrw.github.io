@@ -20,7 +20,6 @@ html {
 html[data-theme='dark'] {
     --bg: #2e3440;
     --fg: #d8dee9;
-    --highlight: #5e81ac;
     --bg-shade1: #3b4252;
     --bg-shade2: #434c5e;
 }
@@ -38,17 +37,52 @@ header {
     justify-content: flex-end;
 }
 
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label{
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 28px;
+    height: 11px;
+    background: #d8dee9;
+    display: block;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+label:after{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    width: 15px;
+    height: 15px;
+    background: #eceff4;
+    border-radius: 90px;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+input:checked + label {
+    background: var(--highlight);
+}
+
+input:checked + label:after{
+    transform: translateX(100%);
+}
+
+
 a{
     color: var(--fg);
     text-decoration: none;
 }
-/*
-.container {
-    position: absolute;
-    top: 0;
-    width: 98%;
-}
-*/
+
 .free-space{
     height: 8vh;
 }
