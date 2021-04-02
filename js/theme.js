@@ -17,11 +17,11 @@ let themeCheckbox = document.querySelector('input[name=theme]');
 
 themeCheckbox.addEventListener('change', function() {
     if(this.checked){
-        trans();
+        //trans();
         console.log('not-checked');
         document.documentElement.setAttribute('data-theme','dark');
     } else {
-        trans();
+       // trans();
         console.log('checked');
         document.documentElement.setAttribute('data-theme','light');
     }
@@ -55,7 +55,7 @@ function copyStringToClipboard (str) {
 
  const discord = document.querySelector('#discord');
  discord.addEventListener('click', function(){
-     
+
     copyStringToClipboard("TypicalNob-#3733"); 
     alert("Text copied to clipboard");
  })
