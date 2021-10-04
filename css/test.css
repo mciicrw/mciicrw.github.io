@@ -1,0 +1,15 @@
+.container, .arteMain{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.artetualList, .subtualList {
+    display: flex;
+    flex-direction: column;
+}

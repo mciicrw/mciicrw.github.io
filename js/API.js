@@ -1,9 +1,8 @@
-
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const octokit = new Octokit();
 const name = "mciicrw";
 
-//activity type text & color
+// activity type text & color
 const activiTypes = {
     CommitCommentEvent :{
         type: "Comment",
@@ -59,8 +58,8 @@ const activiTypes = {
     }
 }
 
-// description if activity has no payload
-// or payload don't contain useful description
+// * description if activity has no payload
+// * or payload don't contain useful description
 const actiDescNoPayload = {
     Delete: "Repository deleted for good",
     Public: "Repository is now public!",
@@ -85,12 +84,12 @@ async function getUserDetails(username) {
 
 /** return string data from payload  */
 async function fetchDescription(type, data){
-    // check if event type is delete or public
+    // * check if event type is delete or public
     // if true imedieately return object vaule from actiDescNoPayload
     if (type === "Delete" || type === "Public") return actiDescNoPayload[type];
 
     // if false run switch case to parse output from payload
-    // will refactor later
+    // TODO: will refactor later
     let output = ""
     switch(type){
         case "Comment": 
@@ -174,9 +173,6 @@ async function actiObjBuilder(username){
 async function displayData(username){
     const userDetails = await getUserDetails(username);
     const activityDetails = await actiObjBuilder(username);
-
-    // console.log(userDetails);
-    // console.log(activityDetails);
     
     // display avatar, follow, and repo count
     document.querySelector('#pp').src = userDetails.avatar_url;
@@ -193,17 +189,3 @@ async function displayData(username){
 
 // run the functoin as soon as script loaded
 displayData(name);
-
-
-
-/*
-flow
-display data ---> display user --> get user details
-              |-> 
-
-get user details -> check type -> get type -> print
-
-document.querySelector('#pp').src = details.data.avatar_url;
-    document.querySelector('#follow').innerHTML = `<strong>${details.data.followers} Followers ${details.data.following} Following ${details.data.public_repos} Repositories</strong>`
-
-*/

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/test.css">
+        <script src="js/moment.js"></script>
+        <!-- <script src="js/FileSaver.js"></script> -->
+    </head>
+    <body>
+        <!--<form name="login">-->
+            <div class="container">
+                <label for="name">Char Name</label>
+                <input type="text" name="name" id="name">
+                <label for="build">Build</label>
+                <input type="text" name="build" id="build">
+                <label for="recomm">Recommended Build?</label>
+                <input type="checkbox" name="recomm" id="recomm">
+                <label for="desc">Description</label>
+                <textarea name="desc" id="desc" cols="50" rows="10"></textarea>
+                <div class="row">
+                    <div class="arteList">
+                        <h3>Artifact</h3>
+                        <div class="artetualList">
+                            <input type="text" name="arte" id="arte0">
+                        </div>
+                        <button onclick="addArtifactCol()">Add Artifact</button>
+                    </div>
+                    <div class="arteMain">
+                        <h3>Main Stats</h3>
+                        <label for="sand">Sands</label>
+                        <input type="text" name="sand" id="sand">
+                        <label for="goblet">goblet</label>
+                        <input type="text" name="goblet" id="goblet">
+                        <label for="circlet">Circlet</label>
+                        <input type="text" name="circlet" id="circlet">
+                    </div>
+                    <div class="subList">
+                        <h3>Sub Stats</h3>
+                        <div class="subtualList">
+                            <input type="text" name="sub" id="sub0">
+                        </div>
+                        <button onclick="addSubCol()">Add Substat</button>
+                    </div>
+                </div>
+                <div class="weaponList">
+                    <h3>Weapon</h3>
+                    <div class="weatualList">
+                        <input type="text" name="weap" id="weap0">
+                    </div>
+                    <button onclick="addWeapCol()">Add Weapon</button>
+                </div>
+                <div class="talentList">
+                    <h3>Talent</h3>
+                    <div class="talentualList">
+                        <input type="text" name="talent" id="talent0">
+                    </div>
+                    <button onclick="addTalentCol()">Add Talent</button>
+                </div>
+                <label for="tip">Ability Tips</label>
+                <textarea name="tip" id="tip" cols=50" rows="25"></textarea>
+                <h1></h1>
+                <button type="submit" onclick="convert()">Submit</button>
+            </div>
+            <div class="container">
+                <h2></h2>
+                <textarea name="output" id="out" cols="50" rows="50" readonly></textarea>
+            </div>
+        <!--</form>-->
+        <script src="js/test.js"></script>
+    </body>
+</html>
