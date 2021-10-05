@@ -1,15 +1,9 @@
-.container, .arteMain{
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-}
+
 
 .row{
-    display: flex;
-    flex-direction: row;
+    margin-top: 0.25em;
 }
 
-.artetualList, .subtualList {
-    display: flex;
-    flex-direction: column;
+#out{
+    font-family: monospace;
 }

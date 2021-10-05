@@ -12,25 +12,25 @@ let taletcount = 0;
 function addArtifactCol(){
     // console.log('aaaa')
     const arteListArea = document.querySelector(`#arte${artecount}`)
-    arteListArea.insertAdjacentHTML('afterend',`<input type="text" name="arte" id="arte${artecount+1}">`)
+    arteListArea.insertAdjacentHTML('afterend',`<input class="form-control form-control-sm" type="text" name="arte" id="arte${artecount+1}">`)
     artecount += 1;
 }
 
 function addSubCol(){
     const subListArea = document.querySelector(`#sub${subcount}`)
-    subListArea.insertAdjacentHTML('afterend', `<input type="text" name="sub" id="sub${subcount+1}">`)
+    subListArea.insertAdjacentHTML('afterend', `<input class="form-control form-control-sm" type="text" name="sub" id="sub${subcount+1}">`)
     subcount += 1;
 }
 
 function addWeapCol(){
     const weapList = document.querySelector(`#weap${weapcount}`)
-    weapList.insertAdjacentHTML('afterend', `<input type="text" name="weap" id="weap${weapcount+1}">`)
+    weapList.insertAdjacentHTML('afterend', `<input class="form-control form-control-sm" type="text" name="weap" id="weap${weapcount+1}">`)
     weapcount += 1;
 }
 
 function addTalentCol(){
     const talentList = document.querySelector(`#talent${taletcount}`)
-    talentList.insertAdjacentHTML('afterend',`<input type="text" name="talent" id="talent${taletcount+1}">`)
+    talentList.insertAdjacentHTML('afterend',`<input class="form-control form-control-sm" type="text" name="talent" id="talent${taletcount+1}">`)
     taletcount +=1;
 }
 

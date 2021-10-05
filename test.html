@@ -2,70 +2,83 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="css/test.css">
         <script src="js/moment.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/test.css">
         <!-- <script src="js/FileSaver.js"></script> -->
     </head>
     <body>
         <!--<form name="login">-->
             <div class="container">
-                <label for="name">Char Name</label>
-                <input type="text" name="name" id="name">
-                <label for="build">Build</label>
-                <input type="text" name="build" id="build">
-                <label for="recomm">Recommended Build?</label>
-                <input type="checkbox" name="recomm" id="recomm">
+                <label for="name" class="form-label">Char Name</label>
+                <input class="form-control form-control-sm" type="text" name="name" id="name">
+                <label class="form-label" for="build">Build</label>
+                <input class="form-control form-control-sm" type="text" name="build" id="build">
+                <div class="row align-items-start">
+                    <label class="row form-label"for="recomm">Recommended Build?</label>
+                    <input class="row form-check-input" type="checkbox" name="recomm" id="recomm">
+                </div>
                 <label for="desc">Description</label>
-                <textarea name="desc" id="desc" cols="50" rows="10"></textarea>
-                <div class="row">
-                    <div class="arteList">
+                <textarea class="form-control form-control-sm" name="desc" id="desc" cols="50" rows="10"></textarea>
+                <div class="row align-items-start">
+                    <div class="arteList col">
                         <h3>Artifact</h3>
                         <div class="artetualList">
-                            <input type="text" name="arte" id="arte0">
+                            <input class="form-control form-control-sm" type="text" name="arte" id="arte0">
                         </div>
-                        <button onclick="addArtifactCol()">Add Artifact</button>
+                        <button class="btn btn-sm btn-secondary" onclick="addArtifactCol()">Add Artifact</button>
                     </div>
-                    <div class="arteMain">
+                    <div class="arteMain col">
                         <h3>Main Stats</h3>
-                        <label for="sand">Sands</label>
-                        <input type="text" name="sand" id="sand">
-                        <label for="goblet">goblet</label>
-                        <input type="text" name="goblet" id="goblet">
-                        <label for="circlet">Circlet</label>
-                        <input type="text" name="circlet" id="circlet">
+                        <label class="form-label" for="sand">Sands</label>
+                        <input class="form-control form-control-sm" type="text" name="sand" id="sand">
+                        <label class="form-label" for="goblet">Goblet</label>
+                        <input class="form-control form-control-sm" type="text" name="goblet" id="goblet">
+                        <label class="form-label" for="circlet">Circlet</label>
+                        <input class="form-control form-control-sm" type="text" name="circlet" id="circlet">
                     </div>
-                    <div class="subList">
+                    <div class="subList col">
                         <h3>Sub Stats</h3>
                         <div class="subtualList">
-                            <input type="text" name="sub" id="sub0">
+                            <input class="form-control form-control-sm" type="text" name="sub" id="sub0">
                         </div>
-                        <button onclick="addSubCol()">Add Substat</button>
+                        <button class="btn btn-sm btn-secondary" onclick="addSubCol()">Add Substat</button>
                     </div>
                 </div>
-                <div class="weaponList">
-                    <h3>Weapon</h3>
-                    <div class="weatualList">
-                        <input type="text" name="weap" id="weap0">
+                <div class="row align-items-start">
+                    <div class="weaponList col">
+                        <h3>Weapon</h3>
+                        <div class="weatualList">
+                            <input class="form-control form-control-sm" type="text" name="weap" id="weap0">
+                        </div>
+                        <button class="btn btn-sm btn-secondary"  onclick="addWeapCol()">Add Weapon</button>
                     </div>
-                    <button onclick="addWeapCol()">Add Weapon</button>
-                </div>
-                <div class="talentList">
-                    <h3>Talent</h3>
-                    <div class="talentualList">
-                        <input type="text" name="talent" id="talent0">
+                    <div class="talentList col">
+                        <h3>Talent</h3>
+                        <div class="talentualList">
+                            <input class="form-control form-control-sm" type="text" name="talent" id="talent0">
+                        </div>
+                        <button class="btn btn-sm btn-secondary" onclick="addTalentCol()">Add Talent</button>
                     </div>
-                    <button onclick="addTalentCol()">Add Talent</button>
                 </div>
                 <label for="tip">Ability Tips</label>
-                <textarea name="tip" id="tip" cols=50" rows="25"></textarea>
+                <textarea class="form-control form-control-sm" name="tip" id="tip" cols=50" rows="25"></textarea>
                 <h1></h1>
-                <button type="submit" onclick="convert()">Submit</button>
+                <button class="btn btn-sm btn-primary" type="submit" onclick="convert()">Submit</button>
             </div>
             <div class="container">
                 <h2></h2>
-                <textarea name="output" id="out" cols="50" rows="50" readonly></textarea>
+                <h3>Result</h3>
+                <textarea class="form-control form-control-sm" name="output" id="out" cols="50" rows="50" readonly></textarea>
             </div>
         <!--</form>-->
+<!-- 
+        <div class="container">
+            <label for="name" class="form-label">Char Name</label>
+            input:text.form-co
+        </div> -->
         <script src="js/test.js"></script>
     </body>
 </html>
